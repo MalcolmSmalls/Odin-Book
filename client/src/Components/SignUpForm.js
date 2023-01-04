@@ -20,10 +20,54 @@ export default function SignUpForm() {
         })        
     }
 
+    // function handleSubmit(event){
+    //     event.preventDefault(); 
+    //     setSignUp(prevSignUp => {
+    //         return {...prevSignUp}
+    //     })
+    // }
+
+    let handleSubmit = async (event) => {
+        event.preventDefault();
+        
+        try {
+            let res = await fetch("http://localhost:9000/member/create", {
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username: signUp.username,
+                    email: signUp.email,
+                    password: signUp.password
+                }),
+            });
+            let resJson = await res.json();
+
+            if (res.status === 200) {
+                setSignUp({
+                    username: "",
+                    email: "",
+                    password: ""
+                })
+                console.log("User created successfully")
+            } else {
+                console.log("Some error occured")
+            }
+                
+    
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
 
     return(
         <div className = "signup-container">
-            <form >
+            <h1>RAP BOOK</h1>
+            <h2>Sign Up</h2>
+            <form className ="signup-form" onSubmit={handleSubmit}>
                 <label htmlFor = "username">Username:</label>
                 <input type ="text"
                        name="username"
