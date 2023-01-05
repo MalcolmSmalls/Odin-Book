@@ -1,4 +1,7 @@
 import React from "react"
+import { useNavigate } from 'react-router-dom';
+
+
 
 
 export default function SignUpForm() {
@@ -20,6 +23,8 @@ export default function SignUpForm() {
         })        
     }
 
+    const navigate = useNavigate()
+
     // function handleSubmit(event){
     //     event.preventDefault(); 
     //     setSignUp(prevSignUp => {
@@ -29,7 +34,7 @@ export default function SignUpForm() {
 
     let handleSubmit = async (event) => {
         event.preventDefault();
-        
+
         try {
             let res = await fetch("http://localhost:9000/member/create", {
                 method: "POST",
@@ -43,7 +48,8 @@ export default function SignUpForm() {
                     password: signUp.password
                 }),
             });
-            let resJson = await res.json();
+
+            // let resJson = await res.json();
 
             if (res.status === 200) {
                 setSignUp({
@@ -52,6 +58,7 @@ export default function SignUpForm() {
                     password: ""
                 })
                 console.log("User created successfully")
+                navigate("/login")
             } else {
                 console.log("Some error occured")
             }
