@@ -39,6 +39,8 @@ export default function LogIn () {
                 })
                 console.log("Successfully logged in")
             }else{
+                let text = await res.text()
+                console.log(text)
                 console.log("Wrong credientials")
             }
 

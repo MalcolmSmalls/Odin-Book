@@ -61,12 +61,12 @@ passport.serializeUser(function(member, done) {
 
 app.post(
 	"/log-in", (req, res, next) => {
-        passport.authenticate("local",  (err, member) => {
+        passport.authenticate("local",  (err, member, info) => {
             if (err) {
                 return next(err);
             }
             if( ! member ) {
-                return res.sendStatus(401)
+                return res.status(401).send(info.message)
             }
 
             req.login(member, loginErr => {
