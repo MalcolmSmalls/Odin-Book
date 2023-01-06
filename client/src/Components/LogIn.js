@@ -17,16 +17,47 @@ export default function LogIn () {
         })
     }
 
+    async function handleSubmit(event){
+        event.preventDefault();
+        try{
+            let res = await fetch("http://localhost:9000/log-in", {
+                method:"POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username: form.username,
+                    password: form.password
+                })
+            });
+
+            if(res.status === 200){
+                setForm({
+                    username: "",
+                    password: ""
+                })
+                console.log("Successfully logged in")
+            }else{
+                console.log("Wrong credientials")
+            }
+
+
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
 
     return (
         <main>
             <div className = "left-container">
                 <h1>Rapbook</h1>
-                <p>Drop bars with friends and the world around you on Rapbook.</p>
+                <p>Drop bars with friends on the world around you on Rapbook.</p>
 
             </div>
             <div className = "login-container">
-                <form className = "login-form">
+                <form className = "login-form" onSubmit = {handleSubmit}>
 
                     <input name = "username"
                              id = "username"

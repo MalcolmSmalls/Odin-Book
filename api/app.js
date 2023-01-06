@@ -46,25 +46,39 @@ app.use("/member", routes.member)
 app.use("/testAPI", routes.testAPI)
 app.use('/messages', routes.message)
 
-passport.serializeUser(function(user, done) {
-    done(null, user.id);
+passport.serializeUser(function(member, done) {
+    done(null, member.id);
   });
   
   passport.deserializeUser(function(id, done) {
-    User.findById(id, function(err, user) {
-      done(err, user);
+    Member.findById(id, function(err, member) {
+      done(err, member);
     });
   });
 
+
+  
+
 app.post(
-	"/log-in",
-	passport.authenticate("local", {
-		successRedirect: "/right",
-		failureRedirect: "/wrong"
+	"/log-in", (req, res, next) => {
+        passport.authenticate("local",  (err, member) => {
+            if (err) {
+                return next(err);
+            }
+            if( ! member ) {
+                return res.sendStatus(401)
+            }
 
-	})
+            req.login(member, loginErr => {
+                if(loginErr){
+                    return next(loginErr);
+                }
+                return res.send({success: true})
+            })
+            
+        })(req, res, next)
 
-)
+});
 
 passport.use(
 	new LocalStrategy((username, password, done) => {
