@@ -11,7 +11,7 @@ const cors = require('cors')
 var createError = require('http-errors');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const { allowedNodeEnvironmentFlags } = require('process');
+const Member = require('./models/member')
 
 
 const mongoDb = process.env.MONGO
@@ -45,6 +45,48 @@ app.use("/", routes.index)
 app.use("/member", routes.member)
 app.use("/testAPI", routes.testAPI)
 app.use('/messages', routes.message)
+
+passport.serializeUser(function(user, done) {
+    done(null, user.id);
+  });
+  
+  passport.deserializeUser(function(id, done) {
+    User.findById(id, function(err, user) {
+      done(err, user);
+    });
+  });
+
+app.post(
+	"/log-in",
+	passport.authenticate("local", {
+		successRedirect: "/right",
+		failureRedirect: "/wrong"
+
+	})
+
+)
+
+passport.use(
+	new LocalStrategy((username, password, done) => {
+		Member.findOne({username: username}, (err,member) => {
+			if(err) {
+				return done(err);
+			}
+			if(!member) {
+				return done(null, false, { message: "Incorrect username" });
+			}
+			if (member.password !== password){
+
+				return done(null, false, { message: "Incorrect password" });
+			}
+
+			return done(null, member)
+
+		})
+
+	})
+
+)
 
 app.listen(9000, () => console.log("app listening on port 9000!"));
 

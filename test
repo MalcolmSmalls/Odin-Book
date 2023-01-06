@@ -20,4 +20,7 @@
 
 # curl -X POST -H "Content-Type:application/json" http://localhost:9000/messages -d '{"text":"bruhh"}'
 
-curl -X POST -H "Content-Type: application/json" http://localhost:9000/member/create -d '{"username": "shut", "email": "shut@gmail.com", "password": "shut2"}'
+# curl -X POST -H "Content-Type: application/json" http://localhost:9000/member/create -d '{"username": "shut", "email": "shut@gmail.com", "password": "shut2"}'
+
+
+curl -X POST -H "Content-Type: application/json" http://localhost:9000/log-in -d '{"username": "chop", "password": "sdvvsvsdv"}'
