@@ -7,7 +7,6 @@ exports.member_create_get = (req, res) => {
 }
 
 exports.member_create_post = (req, res, next) => {
-  console.log(req.body)
 	const member = new Member ({
 		username: req.body.username,
 		email: req.body.email,
@@ -16,7 +15,7 @@ exports.member_create_post = (req, res, next) => {
 		if(err){
 			return next(err)
 		}
-	res.redirect("/")
+	res.redirect("/member/create")
 	});
     console.log(member)
 
