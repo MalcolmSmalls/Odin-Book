@@ -86,7 +86,7 @@ export default function LogIn () {
         <main style = {mainStyle}>
             {status==="" ? <div className = "left-container">
                 <h1>Rapbook</h1>
-                <p>Drop bars with friends on the world around you on Rapbook.</p>
+                <p>Drop bars with friends about the world around you on Rapbook.</p>
 
             </div> : null
             }
@@ -110,8 +110,8 @@ export default function LogIn () {
 
                     {status === "Incorrect username" ? 
                         <p className = "wrong-p">
-                            The username you entered isn’t connected to an account. 
-                            <strong>Create a new Facebook account.</strong>
+                            The username you entered isn’t connected to an account.  
+                            <strong> Create a new Facebook account.</strong>
                         </p> : null}
 
                     <input name = "password"
@@ -125,7 +125,7 @@ export default function LogIn () {
                     {status === "Incorrect password" ? 
 
                         <p className = "wrong-p">
-                            The password you’ve entered is incorrect.
+                            The password you’ve entered is incorrect. 
                             <strong> Forgot Password?</strong>
                         </p> : null}
 

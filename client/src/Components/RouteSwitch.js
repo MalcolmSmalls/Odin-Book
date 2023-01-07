@@ -8,8 +8,8 @@ export default function RouteSwitch(){
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element = {<SignUpForm />} />
-                <Route path="/login" element = {<LogIn />} />
+                <Route path="/" element = {<LogIn />} />
+                {/* <Route path="/login" element = {<LogIn />} /> */}
             </Routes>
         </BrowserRouter>
     )

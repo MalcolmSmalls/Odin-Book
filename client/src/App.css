@@ -78,7 +78,7 @@ main {
 .left-container p {
   margin-top:10px;
   font-size:25px;
-  width: 60%;
+  width: 65%;
 }
 
 .left-container {
@@ -140,11 +140,20 @@ main {
   font-size:15px;
 }
 
+.login-btn:hover{
+  cursor: pointer;
+  background-color:hsl(214,89%,42%)
+}
+
 .create-btn {
   background-color:#42b72a;
   width:170px;
 }
 
+.create-btn:hover{
+  cursor: pointer;
+  background-color: hsl(109.8, 62.7%, 34.1%)
+}
 .wrong-p {
   font-size:12px;
   color:#f02849;
