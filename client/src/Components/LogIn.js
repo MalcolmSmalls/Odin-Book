@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef   } from "react"
+import Modal from "./SignUpForm/Modal"
 
 export default function LogIn () {
 
@@ -11,6 +12,8 @@ export default function LogIn () {
     )
 
     const [ status, setStatus ] = React.useState("")
+
+    const [ isShown, setIsShown] = React.useState("false")
 
     function handleChange(e){
         const { name, value } = e.target
@@ -82,6 +85,7 @@ export default function LogIn () {
         handleFocus.current.focus()
     }, [status]);
 
+
     return (
         <main style = {mainStyle}>
             {status==="" ? <div className = "left-container">
@@ -142,8 +146,13 @@ export default function LogIn () {
 
                 }}/> : null}
 
-                {status === "" ? <button className = "create-btn">Create new account</button> : null}
-
+                
+                {status === "" ? <button className = "create-btn"
+                                         onClick = {() => setIsShown(true)}>
+                                            Create new account
+                                 </button> : null}
+                
+                <Modal isShown = {isShown} onClose = {() => setIsShown(false)} />
             </div>
         </main>
 
