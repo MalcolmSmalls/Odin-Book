@@ -13,7 +13,7 @@ export default function LogIn () {
 
     const [ status, setStatus ] = React.useState("")
 
-    const [ isShown, setIsShown] = React.useState("false")
+    const [ isShown, setIsShown] = React.useState(false)
 
     function handleChange(e){
         const { name, value } = e.target
