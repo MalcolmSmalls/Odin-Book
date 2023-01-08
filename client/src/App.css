@@ -38,19 +38,21 @@
   gap:8px;
 }
 
-.signup-form label {
-  text-transform:uppercase;
-  font-size:10px;
-  padding-top: 10px;
-  font-weight:bold;
+.name-fields {
+  display:flex;
+  gap:10px;
 }
 
 .signup-container h1 {
-  margin-bottom:0px;
+  margin: 0px;
 }
 
 .signup-container h2 {
   margin-top:0px;
+}
+
+.signup-form input {
+  height:30px;
 }
 
 main {

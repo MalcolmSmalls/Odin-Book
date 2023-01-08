@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom';
 export default function SignUpForm() {
     const [ signUp, setSignUp ] = React.useState(
         {
+            firstName: "",
+            lastName: "",
             username: "",
             email: "",
             password: ""
@@ -43,6 +45,8 @@ export default function SignUpForm() {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
+                    firstName: signUp.firstName,
+                    lastName: signUp.lastName,
                     username: signUp.username,
                     email: signUp.email,
                     password: signUp.password
@@ -72,30 +76,51 @@ export default function SignUpForm() {
 
     return(
         <div className = "signup-container">
-            <h1>RAP BOOK</h1>
-            <h2>Sign Up</h2>
+            <div className="top" style={{'padding': '10px'}}>
+                <h1>Sign Up</h1>
+                <span>It's quick and easy</span>
+            </div>
+            <hr />
             <form className ="signup-form" onSubmit={handleSubmit}>
-                <label htmlFor = "username">Username:</label>
+                <div className = "name-fields">
+                    <input type ="text"
+                        name="firstName"
+                        id="su-firstName"
+                        placeholder = "First Name"
+                        value={signUp.firstName}
+                        onChange={handleChange}
+                    />
+
+                    <input type ="text"
+                        name="lastName"
+                        id="su-lastName"
+                        placeholder = "Last Name"
+                        value={signUp.lastName}
+                        onChange={handleChange}
+                    />
+
+                </div>
+
                 <input type ="text"
                        name="username"
-                       id="username"
+                       id="su-username"
+                       placeholder = "Username"
                        value={signUp.username}
                        onChange={handleChange}
                 />
 
-                <label htmlFor = "email">E-mail:</label>
                 <input type ="email"
-                       placeholder="email@email.com"
+                       placeholder="Email"
                        name="email"
-                       id="email"
+                       id="su-email"
                        value={signUp.email}
                        onChange={handleChange}
                 />
 
-                <label htmlFor = "password">Password:</label>
                 <input type ="password"
                        name="password"
-                       id="password"
+                       id="su-password"
+                       placeholder="Password"
                        value={signUp.password}
                        onChange={handleChange}
                 />

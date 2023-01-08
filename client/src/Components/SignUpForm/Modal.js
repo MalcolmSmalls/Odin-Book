@@ -8,9 +8,11 @@ const MODAL_STYLES = {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     backgroundColor: 'white',
-    padding: '50px',
+    // padding: '10px',
     zIndex: 1000,
-    
+    boxShadow: "0px 5px 7px 3px rgba(0,0,0,.1)",
+    borderRadius: 10,
+    width:400
 }
 
 const OVERLAY_STYLES = {
@@ -19,7 +21,7 @@ const OVERLAY_STYLES = {
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: "rgba(0,0,0,.5)",
+    backgroundColor: "rgba(255,255,255,.7)",
     zIndex: 1000,
 }
 
@@ -33,7 +35,7 @@ export default function Modal(props){
                 <div style = {MODAL_STYLES}>
                     <Form />
                     
-                    <button onClick={props.onClose}>Close Modal</button>
+                    <button onClick={props.onClose}>X</button>
                 </div>
             </>, document.getElementById('portal')
         )
