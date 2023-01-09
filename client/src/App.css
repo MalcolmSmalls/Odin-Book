@@ -35,12 +35,28 @@
   flex-direction:column;
   justify-content:center;
   align-items:center;
-  gap:8px;
+  gap:10px;
 }
 
 .name-fields {
   display:flex;
   gap:10px;
+  width:100%;
+  justify-content:center;
+}
+.column-fields {
+  display: flex;
+  flex-direction:column;
+  width: calc(100% - 30px);
+  gap: 10px;
+}
+
+.alt-text {
+  color: #606770;
+}
+
+#su-username {
+  overflow:hidden;
 }
 
 .signup-container h1 {
@@ -51,8 +67,19 @@
   margin-top:0px;
 }
 
+.disclaimer-text {
+  font-size:12px;
+  color: #606770;
+  padding:0 15px;
+  margin: 0;
+}
+
 .signup-form input {
-  height:30px;
+  height:18px;
+  border-radius:3px;
+  padding: 8px;
+  background-color:#f5f6f7;
+  border: 1px solid #ccd0d5;
 }
 
 main {
@@ -132,7 +159,7 @@ main {
   color:#979ca2
 }
 
-.login-btn, .create-btn {
+.login-btn, .create-btn, .signup-btn {
   color:white;
   background-color:#1877f2;
   border: none;
@@ -147,12 +174,12 @@ main {
   background-color:hsl(214,89%,42%)
 }
 
-.create-btn {
+.create-btn, .signup-btn {
   background-color:#42b72a;
   width:170px;
 }
 
-.create-btn:hover{
+.create-btn:hover, .signup-btn:hover{
   cursor: pointer;
   background-color: hsl(109.8, 62.7%, 34.1%)
 }
@@ -164,4 +191,17 @@ main {
 
 .error-field {
   outline:#f02849 solid 1px;
+}
+
+.top {
+  display:flex;
+}
+
+.close-btn {
+  border: none;
+  background-color:white;
+  font-size:40px;
+  margin-left:600%;
+  padding-top:0;
+  margin-top:-5px;
 }
