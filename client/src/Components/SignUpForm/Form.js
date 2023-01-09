@@ -22,8 +22,7 @@ export default function SignUpForm(props) {
                 {...prevSignUp,
                     [name]: value
                 })
-        })      
-        console.log(signUp)  
+        })        
     }
 
     const navigate = useNavigate()

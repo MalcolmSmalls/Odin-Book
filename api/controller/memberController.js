@@ -8,6 +8,8 @@ exports.member_create_get = (req, res) => {
 
 exports.member_create_post = (req, res, next) => {
 	const member = new Member ({
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
 		username: req.body.username,
 		email: req.body.email,
 		password: req.body.password,
