@@ -7,7 +7,7 @@ const testAPI = require('./testAPI')
 
 
 index.get("/", (req, res, next) => {
-    res.render("index", { title: "Express" });
+    res.render("index", { user: req.user });
   });
 
 module.exports = { testAPI, member, message, index }

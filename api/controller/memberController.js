@@ -1,4 +1,5 @@
 const Member = require('../models/member')
+const bcrypt = require('bcryptjs')
 
 // CREATE
 
@@ -7,19 +8,46 @@ exports.member_create_get = (req, res) => {
 }
 
 exports.member_create_post = (req, res, next) => {
-	const member = new Member ({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-		username: req.body.username,
-		email: req.body.email,
-		password: req.body.password,
-	}).save(err => {
-		if(err){
-			return next(err)
-		}
-	res.redirect("/member/create")
-	});
-    console.log(member)
+
+  bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
+    if(err){
+      return err
+    } else {
+      const member = new Member ({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        username: req.body.username,
+        email: req.body.email,
+        password: hashedPassword,
+      }).save(err => {
+        if(err){
+          return next(err)
+        }
+      res.redirect("/member/create")
+      });
+  
+  
+  }});
+
+
+
+
+
+
+
+	// const member = new Member ({
+  //   firstName: req.body.firstName,
+  //   lastName: req.body.lastName,
+	// 	username: req.body.username,
+	// 	email: req.body.email,
+	// 	password: req.body.password,
+	// }).save(err => {
+	// 	if(err){
+	// 		return next(err)
+	// 	}
+	// res.redirect("/member/create")
+	// });
+
 
 };
 

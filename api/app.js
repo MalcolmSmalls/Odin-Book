@@ -12,6 +12,7 @@ var createError = require('http-errors');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const Member = require('./models/member')
+const bcrypt = require('bcryptjs')
 
 
 const mongoDb = process.env.MONGO
@@ -23,6 +24,12 @@ db.on("error", console.error.bind(console, "mongo connection error"));
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(function(req, res, next) {
+	res.locals.currentUser = req.user;
+	next();
+
+})
 
 app.set("views", path.join( __dirname, 'views'));
 app.set("view engine", "ejs");
@@ -89,10 +96,18 @@ passport.use(
 			if(!member) {
 				return done(null, false, { message: "Incorrect username" });
 			}
-			if (member.password !== password){
 
-				return done(null, false, { message: "Incorrect password" });
-			}
+      bcrypt.compare(password, member.password, (err, res) => {
+        if(res) {
+          return done(null, member)
+        } else {
+          return done(null, false, { message: "Incorrect password" });
+        }
+      })
+			// if (member.password !== password){
+
+			// 	return done(null, false, { message: "Incorrect password" });
+			// }
 
 			return done(null, member)
 
