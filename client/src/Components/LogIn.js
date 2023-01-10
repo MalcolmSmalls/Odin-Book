@@ -24,8 +24,34 @@ export default function LogIn () {
 
     async function handleSubmit(event){
         event.preventDefault();
+        // async function sendData(){
+        //     const response = await fetch("http://localhost:9000/log-in", 
+        //     {
+        //         method:"POST",
+        //         headers: {
+        //             'Accept': 'application/json',
+        //             'Content-Type': 'application/json'
+        //         },
+        //         body: JSON.stringify({
+        //             username: form.username,
+        //             password: form.password
+        //         })
+        //     })
+
+        //     return response
+
+        // }
+
+        // sendData()
+        //     .then((data) =>{
+        //         console.log('Success', data)
+        //     })
+        //     .catch((error) => {
+        //         console.error('big Error:', error)
+        //     })
+
         try{
-            let res = await fetch("http://localhost:9000/log-in", {
+            let res = await fetch("http://localhost:5000/log-in", {
                 method:"POST",
                 headers: {
                     'Accept': 'application/json',
@@ -65,18 +91,6 @@ export default function LogIn () {
         marginTop: status === "" ? "10%" : "1%"
     }
 
-    // const handleFocus = useCallback((inputElement) => {
-    //     console.log('nurp')
-    //     inputElement.focus()
-    //     if(status !== "" ){
-    //         console.log('yurrrp')
-    //         inputElement.focus()
-    //     }
-    // }, [])
-
-    // React.useEffect( () => {
-    //     handleFocus()
-    // }, [status])
 
     const handleFocus = useRef(null);
 

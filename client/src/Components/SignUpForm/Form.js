@@ -38,7 +38,7 @@ export default function SignUpForm(props) {
         event.preventDefault();
 
         try {
-            let res = await fetch("http://localhost:9000/member/create", {
+            let res = await fetch("http://localhost:5000/member/create", {
                 method: "POST",
                 headers: {
                     'Accept': 'application/json',

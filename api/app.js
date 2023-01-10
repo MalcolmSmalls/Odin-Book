@@ -5,10 +5,8 @@ const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema; 
 const routes = require("./routes")
 const cors = require('cors')
-var createError = require('http-errors');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const Member = require('./models/member')
@@ -104,24 +102,14 @@ passport.use(
           return done(null, false, { message: "Incorrect password" });
         }
       })
-			// if (member.password !== password){
-      // bcrypt.compare(password, member.password, (err, res) => {
-      //   if(res) {
-      //     return done(null, member)
-      //   } else {
-      //     return done(null, false, { message: "Incorrect password" });
-      //   }
-      // })
-        
-				// return done(null, false, { message: "Incorrect password" });
-			// }
 
+			// return done(null, member)
+      
 		})
 
 	})
 
 )
 
-app.listen(9000, () => console.log("app listening on port 9000!"));
-
+app.listen(5000, () => console.log("app listening on port 5000!"));
 

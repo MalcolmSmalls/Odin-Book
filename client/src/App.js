@@ -5,20 +5,6 @@ import React from "react"
 
 function App() {
 
-  const [ form, setForm ] = React.useState({
-
-  })
-
-  const [ api, setApi ] = React.useState( () => {
-    ""
-  })
-
-  React.useEffect(() => {
-    fetch("http://localhost:9000/testapi")
-      .then(res => res.text())
-      .then(res => setApi(res))
-
-  })
 
   return (
     <div className="App">
