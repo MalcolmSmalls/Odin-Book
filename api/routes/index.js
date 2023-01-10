@@ -7,7 +7,12 @@ const testAPI = require('./testAPI')
 
 
 index.get("/", (req, res, next) => {
-    res.render("index", { user: req.user });
+    // res.send(req.user);
+    // console.log(req.user)
+    res.send({ 
+      user: req.user,
+      title: 'New Data' 
+    });
   });
 
 module.exports = { testAPI, member, message, index }

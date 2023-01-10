@@ -4,12 +4,22 @@ import React from "react"
 
 
 function App() {
+  const [ user, setUser ] = React.useState('')
 
+  React.useEffect( () => {
+    fetch('http://localhost:5000/')
+      .then(res => res.text())
+      .then(data => setUser(JSON.parse(data)))
+      .catch(err => err)
+    console.log(user)
+  }, [])
 
   return (
     <div className="App">
         {/* <SignUpForm /> */}
         {/* {api} */}
+        yurp
+        {user.title}
     </div>
   );
 }

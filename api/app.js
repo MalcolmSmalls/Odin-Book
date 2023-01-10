@@ -66,7 +66,7 @@ passport.serializeUser(function(member, done) {
 
 app.post(
 	"/log-in", (req, res, next) => {
-        passport.authenticate("local",  (err, member, info) => {
+        passport.authenticate("local", {successRedirect: "/"}, (err, member, info) => {
             if (err) {
                 return next(err);
             }

@@ -9,6 +9,7 @@ export default function RouteSwitch(){
             <Routes>
                 <Route path="/" element = {<LogIn />} />
                 {/* <Route path="/login" element = {<LogIn />} /> */}
+                <Route path="/home" element = {<App />} />
             </Routes>
         </BrowserRouter>
     )
