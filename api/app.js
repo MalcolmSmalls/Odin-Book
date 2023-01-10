@@ -72,7 +72,7 @@ app.post(
             if (err) {
                 return next(err);
             }
-            if( ! member ) {
+            if( !member ) {
                 return res.status(401).send(info.message)
             }
 
@@ -105,11 +105,16 @@ passport.use(
         }
       })
 			// if (member.password !== password){
-
-			// 	return done(null, false, { message: "Incorrect password" });
+      // bcrypt.compare(password, member.password, (err, res) => {
+      //   if(res) {
+      //     return done(null, member)
+      //   } else {
+      //     return done(null, false, { message: "Incorrect password" });
+      //   }
+      // })
+        
+				// return done(null, false, { message: "Incorrect password" });
 			// }
-
-			return done(null, member)
 
 		})
 
