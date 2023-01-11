@@ -75,7 +75,7 @@ export default function LogIn () {
                 let data = await res.json()
                 console.log(data.user)
                 console.log("Successfully logged in")
-                navigate('./Home')
+                navigate('./home', {state:data.user})
             }else{
                 let text = await res.text()
                 setStatus(text)
