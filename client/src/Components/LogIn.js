@@ -1,4 +1,5 @@
-import React, { useCallback, useEffect, useRef   } from "react"
+import React, { useCallback, useEffect, useRef } from "react"
+import { useNavigate } from "react-router-dom"
 import Modal from "./SignUpForm/Modal"
 
 export default function LogIn () {
@@ -14,6 +15,9 @@ export default function LogIn () {
     const [ status, setStatus ] = React.useState("")
 
     const [ isShown, setIsShown] = React.useState(false)
+
+    let navigate = useNavigate()
+
 
     function handleChange(e){
         const { name, value } = e.target
@@ -68,7 +72,10 @@ export default function LogIn () {
                     username: "",
                     password: ""
                 })
+                let data = await res.json()
+                console.log(data.user)
                 console.log("Successfully logged in")
+                navigate('./Home')
             }else{
                 let text = await res.text()
                 setStatus(text)

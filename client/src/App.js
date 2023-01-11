@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React from "react"
+import LogIn from "./Components/LogIn"
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
 
   return (
     <div className="App">
+      <LogIn />
         {/* <SignUpForm /> */}
         {/* {api} */}
         yurp

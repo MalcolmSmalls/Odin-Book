@@ -78,7 +78,7 @@ app.post(
                 if(loginErr){
                     return next(loginErr);
                 }
-                return res.send({success: true})
+                return res.send({user: member})
             })
             
         })(req, res, next)
