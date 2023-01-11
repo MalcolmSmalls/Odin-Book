@@ -7,6 +7,7 @@ const MemberSchema = new Schema ({
     username: { type: String, required: true, maxLength: 15, minLength: 1 },
     email: { type: String, required: true},
     password: {type: String, required: true},
+    defaultPicture: { type: String, default: '../defaultIcon.jpg'},
     // likes: { type: Number, default: 0 },
     // dislikes: { type: Number, default: 0 },
     // comments: { type: Schema.Types.ObjectId, ref: "Comment"},

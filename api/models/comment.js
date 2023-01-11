@@ -7,7 +7,8 @@ const CommentSchema = new Schema ({
     likes: { type: Number, default: 0 },
     dislikes: { type: Number, default: 0 },
     comments: [{ type: Schema.Types.ObjectId, ref: "Comment"}],
-    date: { type: Date, default: Date.now }
+    date: { type: Date, default: Date.now },
+
 
 });
 
@@ -15,6 +16,13 @@ const CommentSchema = new Schema ({
 CommentSchema.virtual("url").get( () => {
     return `/comment/${this.id}`
 })
+
+
+
+
+
+
+
 
 
 module.exports = mongoose.model('Comment', CommentSchema)

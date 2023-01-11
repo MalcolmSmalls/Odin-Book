@@ -19,6 +19,7 @@ exports.member_create_post = (req, res, next) => {
         username: req.body.username,
         email: req.body.email,
         password: hashedPassword,
+        defaultPicture: req.body.defaultPicture
       }).save(err => {
         if(err){
           return next(err)
